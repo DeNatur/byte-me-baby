@@ -61,7 +61,6 @@ func move(delta):
 	set_animation(input_vector)
 	move_and_slide()
 	var areaPos = velocity.normalized()
-	print(areaPos)
 	if (areaPos != Vector2.ZERO):
 		current_view = Vector2(areaPos.x*64,areaPos.y*64) 
 		$interactiveArea.position = $collision.position + current_view
