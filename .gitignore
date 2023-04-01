@@ -2,6 +2,8 @@
 # Godot-specific ignores
 .import/
 godot/.godot/
+godot/.DS_Store
+godot/ui/theme.tres
 # Mono-specific ignores
 .mono/
 data_*/
