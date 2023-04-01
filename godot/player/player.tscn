@@ -311,6 +311,10 @@ libraries = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="interactiveArea"]
 shape = SubResource("RectangleShape2D_txkov")
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
+[node name="AnimEnd" type="Timer" parent="."]
+wait_time = 0.156
+one_shot = true
+
+[node name="AnimStart" type="Timer" parent="."]
+wait_time = 0.278
 one_shot = true
