@@ -4,8 +4,8 @@ enum MoveDirection {LEFT, RIGHT}
 
 const SPEED = 300.0
 const ACCELERATION = 10
-const JUMP_VELOCITY = -400.0
-signal skill_used(skill_type)
+
+signal skill_used(skill_type, node_name)
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -17,7 +17,8 @@ var direction = MoveDirection.RIGHT
 
 func _physics_process(delta):
 	move(delta)
-	skill(delta)
+	if Input.is_action_just_pressed("interact"):	
+		skill(delta)
 
 
 func move(delta):
