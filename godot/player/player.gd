@@ -16,9 +16,12 @@ var sprite_player = $Sprite2D
 var direction = MoveDirection.RIGHT
 
 func _physics_process(delta):
-	move(delta)
+	if not $Timer.is_stopped():
+		await $Timer.timeout
 	if Input.is_action_just_pressed("interact"):	
 		skill(delta)
+	else:
+		move(delta)
 
 
 func move(delta):
@@ -52,4 +55,6 @@ func set_idle_anim():
 	sprite_player.set_flip_h(direction == MoveDirection.LEFT)
 			
 func skill(delta):
-	pass
+	print("Cry")
+	animation_player.play("Cry")
+	$Timer.start()
