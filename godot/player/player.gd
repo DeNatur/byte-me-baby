@@ -64,7 +64,7 @@ func skill(delta):
 	$AnimStart.start()
 	animation_player.play(current_skill)
 	use_skill()
-
+	emit_signal("skill_used", "skill")
 	
 func use_skill():
 	
@@ -79,6 +79,3 @@ func use_skill():
 		move_and_slide()
 
 	in_action = false
-
-
-	

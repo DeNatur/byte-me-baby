@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bc5ov6fc5ohuo"]
+[gd_scene load_steps=6 format=3 uid="uid://bc5ov6fc5ohuo"]
 
 [ext_resource type="Script" path="res://objects/reactive_object.gd" id="1_5jqwg"]
 [ext_resource type="Texture2D" uid="uid://d07gvulid4yjg" path="res://objects/reactive_object.png" id="1_t4mqr"]
@@ -6,6 +6,9 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_txav6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ijh7g"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_op3jw"]
 size = Vector2(64, 64)
 
 [node name="reactive_object" type="RigidBody2D"]
@@ -22,3 +25,9 @@ centered = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(32, 32)
 shape = SubResource("RectangleShape2D_ijh7g")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(32, 32)
+shape = SubResource("RectangleShape2D_op3jw")
