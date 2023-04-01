@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bc5ov6fc5ohuo"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_txav6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ijh7g"]
+size = Vector2(64, 64)
+
+[node name="reactive_object" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_txav6")
+gravity_scale = 2.66454e-15
+max_contacts_reported = 3
+contact_monitor = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(32, 32)
+shape = SubResource("RectangleShape2D_ijh7g")
