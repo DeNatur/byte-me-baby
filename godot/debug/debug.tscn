@@ -22,3 +22,4 @@ position = Vector2(640, 64)
 
 [connection signal="game_restart" from="Hud" to="player" method="_on_hud_game_restart"]
 [connection signal="balance_change" from="player" to="Hud" method="_on_player_balance_change"]
+[connection signal="game_over" from="player" to="Hud" method="_on_player_game_over"]
