@@ -1,10 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://ilhmki6uud7q"]
+[gd_scene load_steps=5 format=3 uid="uid://ilhmki6uud7q"]
 
 [ext_resource type="PackedScene" uid="uid://di6q5bu004kkj" path="res://player/player.tscn" id="1_52802"]
+[ext_resource type="PackedScene" uid="uid://cfhihuadmf0gb" path="res://emoji_bar/emotion_bar.tscn" id="1_tmts8"]
 [ext_resource type="PackedScene" uid="uid://dk53cyur2b5w3" path="res://objects/Obstacle.tscn" id="2_kbikg"]
 [ext_resource type="PackedScene" uid="uid://bc5ov6fc5ohuo" path="res://objects/reactive_object.tscn" id="3_hll6n"]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="hud" type="CanvasLayer" parent="."]
+
+[node name="EmotionBar" parent="hud" instance=ExtResource("1_tmts8")]
+position = Vector2(483, -4.76837e-07)
+scale = Vector2(0.600001, 0.56)
 
 [node name="player" parent="." instance=ExtResource("1_52802")]
 
@@ -16,3 +23,5 @@ position = Vector2(183, 119)
 
 [node name="reactive_object2" parent="." instance=ExtResource("3_hll6n")]
 position = Vector2(109, 108)
+
+[connection signal="balance_change" from="player" to="hud/EmotionBar" method="_on_player_balance_change"]
