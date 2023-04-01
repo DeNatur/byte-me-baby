@@ -1,0 +1,135 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfhihuadmf0gb"]
+
+[ext_resource type="Script" path="res://emoji_bar/emotion_bar.gd" id="1_psfom"]
+
+[node name="EmotionBar" type="Node2D"]
+script = ExtResource("1_psfom")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = 56.0
+offset_top = 12.0
+offset_right = 120.0
+offset_bottom = 283.0
+scale = Vector2(1.23802, 1.13179)
+color = Color(0.294118, 0.345098, 0.396078, 1)
+
+[node name="RedIndicator" type="ColorRect" parent="."]
+offset_left = 64.0
+offset_top = 30.0
+offset_right = 128.0
+offset_bottom = 33.0
+color = Color(1, 0.109804, 0.109804, 1)
+
+[node name="RedIndicator2" type="ColorRect" parent="."]
+offset_left = 64.0
+offset_top = 24.0
+offset_right = 128.0
+offset_bottom = 27.0
+color = Color(1, 0.109804, 0.109804, 1)
+
+[node name="RedIndicator3" type="ColorRect" parent="."]
+offset_left = 64.0
+offset_top = 18.0
+offset_right = 128.0
+offset_bottom = 21.0
+color = Color(1, 0.109804, 0.109804, 1)
+
+[node name="RedIndicator4" type="ColorRect" parent="."]
+offset_left = 64.0
+offset_top = 310.0
+offset_right = 128.0
+offset_bottom = 313.0
+color = Color(1, 0.109804, 0.109804, 1)
+
+[node name="RedIndicator5" type="ColorRect" parent="."]
+offset_left = 64.0
+offset_top = 298.0
+offset_right = 128.0
+offset_bottom = 301.0
+color = Color(1, 0.109804, 0.109804, 1)
+
+[node name="RedIndicator6" type="ColorRect" parent="."]
+offset_left = 64.0
+offset_top = 304.0
+offset_right = 128.0
+offset_bottom = 307.0
+color = Color(1, 0.109804, 0.109804, 1)
+
+[node name="GrayPlaceholder3" type="ColorRect" parent="."]
+offset_left = 128.0
+offset_top = 67.0
+offset_right = 192.0
+offset_bottom = 97.0
+rotation = 3.14159
+color = Color(0.282353, 0.282353, 0.282353, 1)
+
+[node name="GrayPlaceholder3" type="ColorRect" parent="GrayPlaceholder3"]
+offset_left = 64.0003
+offset_top = -197.0
+offset_right = 128.0
+offset_bottom = -167.0
+rotation = 3.14159
+color = Color(0.282353, 0.282353, 0.282353, 1)
+
+[node name="GrayPlaceholder4" type="ColorRect" parent="GrayPlaceholder3"]
+offset_left = 64.0002
+offset_top = -133.0
+offset_right = 128.0
+offset_bottom = -103.0
+rotation = 3.14159
+color = Color(0.282353, 0.282353, 0.282353, 1)
+
+[node name="GrayPlaceholder" type="ColorRect" parent="GrayPlaceholder3"]
+offset_left = 64.0003
+offset_top = -101.0
+offset_right = 128.0
+offset_bottom = -71.0002
+rotation = 3.14159
+color = Color(0.282353, 0.282353, 0.282353, 1)
+
+[node name="GrayPlaceholder2" type="ColorRect" parent="GrayPlaceholder3"]
+offset_left = 64.0003
+offset_top = -165.0
+offset_right = 128.0
+offset_bottom = -135.0
+rotation = 3.14159
+color = Color(0.282353, 0.282353, 0.282353, 1)
+
+[node name="GrayPlaceholder4" type="ColorRect" parent="."]
+offset_left = 128.0
+offset_top = 131.0
+offset_right = 192.0
+offset_bottom = 161.0
+rotation = 3.14159
+color = Color(0.282353, 0.282353, 0.282353, 1)
+
+[node name="GrayPlaceholder" type="ColorRect" parent="."]
+offset_left = 128.0
+offset_top = 163.0
+offset_right = 192.0
+offset_bottom = 193.0
+rotation = 3.14159
+color = Color(0.282353, 0.282353, 0.282353, 1)
+
+[node name="GrayPlaceholder2" type="ColorRect" parent="."]
+offset_left = 128.0
+offset_top = 99.0
+offset_right = 192.0
+offset_bottom = 129.0
+rotation = 3.14159
+color = Color(0.282353, 0.282353, 0.282353, 1)
+
+[node name="Up" type="ColorRect" parent="."]
+offset_left = 128.0
+offset_top = 165.0
+offset_right = 192.0
+offset_bottom = 293.0
+rotation = 3.14159
+color = Color(1, 1, 0.678431, 1)
+
+[node name="Botttom" type="ColorRect" parent="."]
+offset_left = 64.0
+offset_top = 166.0
+offset_right = 128.0
+offset_bottom = 294.0
+color = Color(0.203922, 0.596078, 0.858824, 1)
