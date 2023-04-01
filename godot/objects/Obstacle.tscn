@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dk53cyur2b5w3"]
+[gd_scene load_steps=4 format=3 uid="uid://dk53cyur2b5w3"]
 
-[ext_resource type="Texture2D" uid="uid://csth2r3bqsf56" path="res://objects/obstacle.png" id="1_rjaoo"]
+[ext_resource type="Script" path="res://objects/Obstacle.gd" id="1_5rjp3"]
+[ext_resource type="Texture2D" uid="uid://csth2r3bqsf56" path="res://objects/obstacle.png" id="1_vbgqu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6do4v"]
 size = Vector2(64, 64)
 
 [node name="Node2D" type="RigidBody2D"]
 gravity_scale = 0.0
+script = ExtResource("1_5rjp3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(32, 32)
@@ -14,4 +16,9 @@ shape = SubResource("RectangleShape2D_6do4v")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(32, 32)
-texture = ExtResource("1_rjaoo")
+texture = ExtResource("1_vbgqu")
+
+[node name="activeColor" type="ColorRect" parent="."]
+offset_right = 64.0
+offset_bottom = 64.0
+color = Color(1, 1, 0, 0.305882)
