@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ilhmki6uud7q"]
+[gd_scene load_steps=8 format=3 uid="uid://ilhmki6uud7q"]
 
 [ext_resource type="PackedScene" uid="uid://di6q5bu004kkj" path="res://player/player.tscn" id="1_52802"]
 [ext_resource type="Texture2D" uid="uid://ca3agp1bf6mx7" path="res://map/tileset_map.png" id="1_al1al"]
@@ -200,9 +200,14 @@ layer_1/tile_data = PackedInt32Array(3, 327680, 2, 4, 393216, 2, 5, 393216, 2, 6
 position = Vector2(128, 0)
 
 [node name="reactive_object" parent="." instance=ExtResource("3_hll6n")]
-position = Vector2(183, 119)
+position = Vector2(-124, -198)
+object_type = "bridge"
 
 [node name="reactive_object2" parent="." instance=ExtResource("3_hll6n")]
-position = Vector2(109, 108)
+position = Vector2(-321, -210)
+object_type = "bridge"
+
+[node name="reactive_object3" parent="." instance=ExtResource("3_hll6n")]
+position = Vector2(-163, 2)
 
 [connection signal="balance_change" from="player" to="hud/EmotionBar" method="_on_player_balance_change"]

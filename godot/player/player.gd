@@ -5,7 +5,7 @@ enum MoveDirection {LEFT, RIGHT}
 const SPEED = 300.0
 const ACCELERATION = 10
 
-signal skill_used(skill_type)
+signal skill_tried(player_object)
 signal balance_change(current_balance)
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -31,7 +31,6 @@ func get_new_balance(skill):
 	return emotional_balance + skill_value
 	
 func can_use_skill(skill):
-	
 	if skill in skills[current_dragon]:
 		var new_balance = get_new_balance(skill)
 		print(new_balance)
@@ -83,18 +82,11 @@ func set_idle_anim():
 	sprite_player.set_flip_h(direction == MoveDirection.LEFT)
 			
 func skill(delta):
-	#balance check
-	in_action = true
-	var needed_skill = "Fly"
-	print(can_use_skill(skill))
-	if can_use_skill(needed_skill):
-		use_skill(needed_skill)
-	else:
-		in_action = false
+	emit_signal("skill_tried", self)	
 
 	
 func use_skill(skill):
-
+	in_action = true
 	$AnimStart.start()
 	animation_player.play(skill)
 	update_balance_skill(skill)
