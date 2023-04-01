@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://6emudpt6p4o0"]
+
+[ext_resource type="Script" path="res://objects/bridge.gd" id="1_t3qmq"]
+[ext_resource type="Texture2D" uid="uid://b7fmlgaws6few" path="res://objects/bridge.png" id="2_dsyru"]
+
+[node name="bridge" type="Node2D"]
+script = ExtResource("1_t3qmq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(32, 32)
+texture = ExtResource("2_dsyru")
