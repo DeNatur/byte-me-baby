@@ -5,7 +5,7 @@ enum MoveDirection {LEFT, RIGHT}
 const SPEED = 300.0
 const ACCELERATION = 10
 
-signal skill_used(skill_type, node_name)
+signal skill_used(skill_type)
 signal balance_change(current_balance)
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -60,14 +60,14 @@ func set_idle_anim():
 	sprite_player.set_flip_h(direction == MoveDirection.LEFT)
 			
 func skill(delta):
+	#balance check
 	in_action = true
-	$AnimStart.start()
-	animation_player.play(current_skill)
-	use_skill()
-	emit_signal("skill_used", "skill")
+	emit_signal("skill_used", current_skill)
 	
 func use_skill():
-	
+
+	$AnimStart.start()
+	animation_player.play(current_skill)
 	if current_skill == "Cry":
 		await $AnimStart.timeout
 	elif current_skill == "Fly":
