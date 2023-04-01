@@ -1,18 +1,17 @@
 [gd_scene load_steps=3 format=3 uid="uid://dk53cyur2b5w3"]
 
-[ext_resource type="Texture2D" uid="uid://csth2r3bqsf56" path="res://objects/obstacle.png" id="1_xpv48"]
+[ext_resource type="Texture2D" uid="uid://csth2r3bqsf56" path="res://objects/obstacle.png" id="1_rjaoo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6do4v"]
 size = Vector2(64, 64)
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="RigidBody2D"]
+gravity_scale = 0.0
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(32, 32)
 shape = SubResource("RectangleShape2D_6do4v")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(32, 32)
-texture = ExtResource("1_xpv48")
+texture = ExtResource("1_rjaoo")
