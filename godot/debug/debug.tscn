@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ilhmki6uud7q"]
+[gd_scene load_steps=4 format=3 uid="uid://ilhmki6uud7q"]
 
 [ext_resource type="PackedScene" uid="uid://di6q5bu004kkj" path="res://player/player.tscn" id="1_52802"]
 [ext_resource type="PackedScene" uid="uid://dk53cyur2b5w3" path="res://objects/Obstacle.tscn" id="2_kbikg"]
+[ext_resource type="PackedScene" uid="uid://bc5ov6fc5ohuo" path="res://objects/reactive_object.tscn" id="3_hll6n"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -9,3 +10,6 @@
 
 [node name="nod" parent="." instance=ExtResource("2_kbikg")]
 position = Vector2(128, 0)
+
+[node name="reactive_object" parent="." instance=ExtResource("3_hll6n")]
+position = Vector2(228, 76)
