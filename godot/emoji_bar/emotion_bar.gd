@@ -1,8 +1,5 @@
 extends Node2D
 
-func _process(delta):
-	setBalance(1)
-	
 
 func setBalance(upLevel):
 	var bottomLevel = 4 - upLevel
@@ -25,3 +22,8 @@ func levelToHeight(level):
 	if level == 4: 
 		return 128
 			
+
+
+func _on_player_balance_change(current_balance):
+	print("received", current_balance)
+	setBalance(current_balance)

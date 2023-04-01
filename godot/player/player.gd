@@ -15,9 +15,32 @@ var animation_player = $AnimationPlayer
 @onready
 var sprite_player = $Sprite2D
 var direction = MoveDirection.RIGHT
-var current_skill = "Fly"
+var current_dragon = "asia"
 var current_view = Vector2.ZERO
 var in_action = false
+var skills = {"asia":{"Fly":-1,"Cry":1}}
+
+var emotional_balance = 2
+
+func update_balance_skill(skill):
+	emotional_balance = get_new_balance(skill)
+	emit_signal("balance_change", emotional_balance)
+
+func get_new_balance(skill):
+	var skill_value = skills[current_dragon][skill]
+	return emotional_balance + skill_value
+	
+func can_use_skill(skill):
+	
+	if skill in skills[current_dragon]:
+		var new_balance = get_new_balance(skill)
+		print(new_balance)
+		return new_balance <= 4 and new_balance >=  0
+	return false
+
+func _ready():
+	emit_signal("balance_change", emotional_balance)
+	print(emotional_balance)
 
 func _process(delta):
 	if in_action:
@@ -62,15 +85,23 @@ func set_idle_anim():
 func skill(delta):
 	#balance check
 	in_action = true
-	emit_signal("skill_used", current_skill)
+	var needed_skill = "Fly"
+	print(can_use_skill(skill))
+	if can_use_skill(needed_skill):
+		use_skill(needed_skill)
+	else:
+		in_action = false
+
 	
-func use_skill():
+func use_skill(skill):
 
 	$AnimStart.start()
-	animation_player.play(current_skill)
-	if current_skill == "Cry":
+	animation_player.play(skill)
+	update_balance_skill(skill)
+	print(skill)
+	if skill == "Cry":
 		await $AnimStart.timeout
-	elif current_skill == "Fly":
+	elif skill == "Fly":
 		await $AnimStart.timeout
 		$AnimEnd.start()
 		var view_norm = current_view.normalized()

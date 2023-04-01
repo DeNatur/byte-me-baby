@@ -64,6 +64,7 @@ rotation = 3.14159
 color = Color(0.282353, 0.282353, 0.282353, 1)
 
 [node name="GrayPlaceholder3" type="ColorRect" parent="GrayPlaceholder3"]
+layout_mode = 0
 offset_left = 64.0003
 offset_top = -197.0
 offset_right = 128.0
@@ -72,6 +73,7 @@ rotation = 3.14159
 color = Color(0.282353, 0.282353, 0.282353, 1)
 
 [node name="GrayPlaceholder4" type="ColorRect" parent="GrayPlaceholder3"]
+layout_mode = 0
 offset_left = 64.0002
 offset_top = -133.0
 offset_right = 128.0
@@ -80,6 +82,7 @@ rotation = 3.14159
 color = Color(0.282353, 0.282353, 0.282353, 1)
 
 [node name="GrayPlaceholder" type="ColorRect" parent="GrayPlaceholder3"]
+layout_mode = 0
 offset_left = 64.0003
 offset_top = -101.0
 offset_right = 128.0
@@ -88,6 +91,7 @@ rotation = 3.14159
 color = Color(0.282353, 0.282353, 0.282353, 1)
 
 [node name="GrayPlaceholder2" type="ColorRect" parent="GrayPlaceholder3"]
+layout_mode = 0
 offset_left = 64.0003
 offset_top = -165.0
 offset_right = 128.0
