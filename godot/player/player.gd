@@ -40,8 +40,8 @@ func move(delta):
 	move_and_slide()
 	var areaPos = velocity.normalized()
 	if (areaPos != Vector2.ZERO):
-		current_view = Vector2(areaPos.x*64,areaPos.y*100)
-		$interactiveArea.position = Vector2(areaPos.x*64,areaPos.y*100)
+		current_view = Vector2(areaPos.x*64,areaPos.y*80)
+		$interactiveArea.position = current_view
 
 func set_animation(input_vector):
 	if(input_vector.x > 0 ):
