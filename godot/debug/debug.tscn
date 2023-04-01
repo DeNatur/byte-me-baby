@@ -2,7 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://di6q5bu004kkj" path="res://player/player.tscn" id="1_52802"]
 [ext_resource type="Texture2D" uid="uid://ca3agp1bf6mx7" path="res://map/tileset_map.png" id="1_al1al"]
-[ext_resource type="PackedScene" uid="uid://cfhihuadmf0gb" path="res://emoji_bar/emotion_bar.tscn" id="1_tmts8"]
+[ext_resource type="Script" path="res://debug/debug.gd" id="1_mesnt"]
+[ext_resource type="PackedScene" uid="uid://djkkrg8flgkgl" path="res://emoji_bar/hud.tscn" id="2_gacyj"]
 [ext_resource type="PackedScene" uid="uid://dk53cyur2b5w3" path="res://objects/Obstacle.tscn" id="2_kbikg"]
 [ext_resource type="PackedScene" uid="uid://bc5ov6fc5ohuo" path="res://objects/reactive_object.tscn" id="3_hll6n"]
 
@@ -173,12 +174,9 @@ terrain_set_0/terrain_0/color = Color(0.301961, 1, 0.203922, 1)
 sources/0 = SubResource("TileSetAtlasSource_xusfv")
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_mesnt")
 
-[node name="hud" type="CanvasLayer" parent="."]
-
-[node name="EmotionBar" parent="hud" instance=ExtResource("1_tmts8")]
-position = Vector2(483, -4.76837e-07)
-scale = Vector2(0.600001, 0.56)
+[node name="Hud" parent="." instance=ExtResource("2_gacyj")]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_uayln")
@@ -210,4 +208,6 @@ object_type = "bridge"
 [node name="reactive_object3" parent="." instance=ExtResource("3_hll6n")]
 position = Vector2(-163, 2)
 
-[connection signal="balance_change" from="player" to="hud/EmotionBar" method="_on_player_balance_change"]
+[connection signal="game_restart" from="Hud" to="player" method="_on_hud_game_restart"]
+[connection signal="balance_change" from="player" to="Hud" method="_on_player_balance_change"]
+[connection signal="game_over" from="player" to="Hud" method="_on_player_game_over"]
