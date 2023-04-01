@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bc5ov6fc5ohuo"]
+[gd_scene load_steps=5 format=3 uid="uid://bc5ov6fc5ohuo"]
 
+[ext_resource type="Script" path="res://objects/reactive_object.gd" id="1_5jqwg"]
 [ext_resource type="Texture2D" uid="uid://d07gvulid4yjg" path="res://objects/reactive_object.png" id="1_t4mqr"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_txav6"]
@@ -12,6 +13,7 @@ physics_material_override = SubResource("PhysicsMaterial_txav6")
 gravity_scale = 2.66454e-15
 max_contacts_reported = 3
 contact_monitor = true
+script = ExtResource("1_5jqwg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_t4mqr")
