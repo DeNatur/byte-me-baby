@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlxqkh6ky1ccn"]
+
+[ext_resource type="Texture2D" uid="uid://bjvku5ol2l4rg" path="res://objects/rocks.png" id="1_4rs30"]
+[ext_resource type="Script" path="res://objects/rocks.gd" id="1_dnxfi"]
+
+[node name="rocks" type="Node2D"]
+script = ExtResource("1_dnxfi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(32, 32)
+texture = ExtResource("1_4rs30")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true

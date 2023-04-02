@@ -149,20 +149,25 @@ func use_skill(skill):
 	animation_player.play(skill)
 	update_balance_skill(skill)
 	
-	if skill == "Cry":
-		await $AnimStart.timeout
-	elif skill == "Fly":
-		# await $AnimStart.timeout
-		$AnimEnd.start()
-		var view_norm = current_view.normalized()
-		var col_size =  $collision.shape.size + Vector2(100,100)		
-		# position = position + Vector2(view_norm.x*col_size.x,view_norm.y*col_size.y)
-		# move_and_slide()
+	match skill:
+		"Cry":
+			await $AnimStart.timeout
+		"Fly":
+			# await $AnimStart.timeout
+			$AnimEnd.start()
+			var view_norm = current_view.normalized()
+			var col_size =  $collision.shape.size + Vector2(100,100)		
+			# position = position + Vector2(view_norm.x*col_size.x,view_norm.y*col_size.y)
+			# move_and_slide()
 
-		roll_vector = Vector2(view_norm.x*col_size.x,view_norm.y*col_size.y).normalized()
-		roll_vector_final_position = position + Vector2(view_norm.x*col_size.x,view_norm.y*col_size.y)		
-		push_move = true
-	
+			roll_vector = Vector2(view_norm.x*col_size.x,view_norm.y*col_size.y).normalized()
+			roll_vector_final_position = position + Vector2(view_norm.x*col_size.x,view_norm.y*col_size.y)		
+			push_move = true
+		"Smash":
+			await $AnimStart.timeout
+		"Flame":
+			await $AnimStart.timeout
+			
 	in_action = false
 
 func _on_hud_game_restart():
