@@ -9,6 +9,7 @@ signal skill_tried(player_object)
 signal balance_change(current_balance)
 signal game_over(balance)
 signal game_finish(balance, skills_stats)
+signal game_start()
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -23,7 +24,9 @@ var in_action = false
 var skills = {"asia":{"Fly":-1,"Cry":1}}
 var skills_stats = {"Fly":0, "Cry":0}
 var is_swapped = false
+var game_started = false
 var emotional_balance = 2
+
 
 func update_balance_skill(skill):
 	emotional_balance = get_new_balance(skill)
@@ -81,6 +84,9 @@ func move(delta):
 	move_and_slide()
 	var areaPos = velocity.normalized()
 	if (areaPos != Vector2.ZERO):
+		if (!game_started):
+			emit_signal("game_start")
+			game_started = true
 		current_view = Vector2(areaPos.x*64,areaPos.y*64) 
 		$interactiveArea.position = $collision.position + current_view
 
@@ -126,5 +132,7 @@ func use_skill(skill):
 
 func _on_hud_game_restart():
 	emotional_balance = 2
+	game_started=false
 	emit_signal("balance_change", emotional_balance)
 	get_tree().reload_current_scene()
+

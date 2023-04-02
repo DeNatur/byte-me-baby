@@ -1,6 +1,13 @@
 extends CanvasLayer
 
 signal game_restart
+var game_running = false
+
+func _process(delta):
+	if (game_running):
+		$TimeLabel.text = str(int($TimeOver.time_left)) + " s"
+	else:
+		$TimeLabel.text = "60 s"
 
 func updateScreenFilter(balance):
 	print(balance)
@@ -31,6 +38,7 @@ func _on_player_balance_change(current_balance):
 
 func _on_player_game_over(balance):
 	updateScreenFilter(balance)
+	game_running = false
 	var msg = ""
 	if balance > 2:
 		msg = "Dragon was to excited. Dreamer woke up."
@@ -38,4 +46,16 @@ func _on_player_game_over(balance):
 		msg = "Dragon couldn't fight through sadness."
 	set_game_over(msg)
 	
-		
+
+func _on_player_game_start():
+	$TimeOver.start()
+	game_running = true
+
+
+
+
+func _on_time_over_timeout():
+	updateScreenFilter(-1)
+	game_running = false
+	var msg = "Dragon run ouf of time"
+	set_game_over(msg)
