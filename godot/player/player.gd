@@ -22,7 +22,7 @@ var direction = MoveDirection.RIGHT
 var push_move = false
 var roll_vector = Vector2.ZERO
 var roll_vector_final_position = Vector2.ZERO
-var ROLL_SPEED = 125
+var ROLL_SPEED = 300
 
 var current_dragon = "asia"
 var current_view = Vector2.ZERO
