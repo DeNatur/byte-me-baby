@@ -109,4 +109,4 @@ func use_skill(skill):
 func _on_hud_game_restart():
 	emotional_balance = 2
 	emit_signal("balance_change", emotional_balance)
-	position = Vector2(0,0)
+	get_tree().reload_current_scene()
