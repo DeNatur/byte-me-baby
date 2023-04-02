@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ilhmki6uud7q"]
+[gd_scene load_steps=8 format=3 uid="uid://ilhmki6uud7q"]
 
 [ext_resource type="PackedScene" uid="uid://di6q5bu004kkj" path="res://player/player.tscn" id="1_52802"]
 [ext_resource type="Script" path="res://debug/debug.gd" id="1_mesnt"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bc5ov6fc5ohuo" path="res://objects/reactive_object.tscn" id="3_hll6n"]
 [ext_resource type="PackedScene" uid="uid://dkv1syhl1pjva" path="res://tile_map.tscn" id="3_nhvfj"]
 [ext_resource type="PackedScene" uid="uid://4jvy6visc5kf" path="res://bed.tscn" id="5_klv88"]
+[ext_resource type="FontFile" uid="uid://vys3yuktl6ot" path="res://fonts/Norse-Bold.otf" id="7_2nr6m"]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(1, 0)
@@ -77,6 +78,29 @@ object_type = "rocks"
 
 [node name="bridge6" parent="." instance=ExtResource("3_hll6n")]
 position = Vector2(5695, -576)
+
+[node name="HowToPlayInfo" type="Node" parent="."]
+
+[node name="Basic" type="RichTextLabel" parent="HowToPlayInfo"]
+offset_left = 128.0
+offset_top = 64.0
+offset_right = 448.0
+offset_bottom = 192.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("7_2nr6m")
+theme_override_font_sizes/normal_font_size = 34
+text = "Arrows, WASD - Movement
+E - Use your emotion"
+
+[node name="Advanced" type="RichTextLabel" parent="HowToPlayInfo"]
+offset_left = 4928.0
+offset_top = -768.0
+offset_right = 5312.0
+offset_bottom = -704.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("7_2nr6m")
+theme_override_font_sizes/normal_font_size = 34
+text = "E - Change your culture dragon"
 
 [connection signal="game_restart" from="Hud" to="player" method="_on_hud_game_restart"]
 [connection signal="balance_change" from="player" to="Hud" method="_on_player_balance_change"]

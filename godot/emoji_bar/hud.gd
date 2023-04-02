@@ -37,8 +37,9 @@ func updateBar(balance):
 	
 	
 	
-func set_game_over(msg):
+func set_game_over(msg, color: Color):
 	$Label.text = "Game Over!\n"+msg
+	$Label.modulate = color
 	$Timer.start()
 	await $Timer.timeout
 	emit_signal("game_restart")
@@ -55,10 +56,11 @@ func _on_player_game_over(balance):
 	game_running = false
 	var msg = ""
 	if balance > 2:
+		
 		msg = "Dragon was too" + emotions[currentColor]["Up"] + ". Dreamer woke up."
 	else:
 		msg = "Dragon couldn't fight through " + emotions[currentColor]["Bottom"]
-	set_game_over(msg)
+	set_game_over(msg, Color.BLACK)
 	
 
 func _on_player_game_start():
@@ -69,7 +71,7 @@ func _on_time_over_timeout():
 	updateScreenFilter(-1)
 	game_running = false
 	var msg = "Dragon run ouf of time"
-	set_game_over(msg)
+	set_game_over(msg, Color.WHITE)
 
 
 func _on_player_game_finish(balance, skills_stats):
