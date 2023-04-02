@@ -1,7 +1,9 @@
 extends Node
-@export_enum("water", "bridge", "rock") var object_type: String = "water"
+@export_enum("water", "bridge", "rocks", "woods") var object_type: String = "water"
 const WaterObjectType = preload("res://objects/water.tscn")
 const BridgeObjectType = preload("res://objects/bridge.tscn")
+const RocksObjectType = preload("res://objects/rocks.tscn")
+const WoodsObjectType = preload("res://objects/woods.tscn")
 
 var player_in_range = false
 var object = null
@@ -16,8 +18,10 @@ func _ready():
 			object = WaterObjectType.instantiate()
 		"bridge":
 			object = BridgeObjectType.instantiate()
-		"rock":
-			pass
+		"rocks":
+			object = RocksObjectType.instantiate()
+		"woods":
+			object = WoodsObjectType.instantiate()
 			
 	if object != null:
 		$Sprite2D.hide()
