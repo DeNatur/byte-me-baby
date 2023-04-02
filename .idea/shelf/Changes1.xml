@@ -1,0 +1,19 @@
+<changelist name="Changes1" date="1680390441583" recycled="false">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Changes1/shelved.patch" />
+  <option name="DESCRIPTION" value="Changes" />
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="godot/debug/bridge_on_fire.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes1/bridge_on_fire.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="godot/map/bridge_on_fire.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes1/bridge_on_fire1.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="godot/map/bridge_on_fire.res" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes1/bridge_on_fire.res" />
+  </binary>
+</changelist>

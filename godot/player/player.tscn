@@ -275,6 +275,7 @@ _data = {
 size = Vector2(32, 32)
 
 [node name="player" type="CharacterBody2D"]
+top_level = true
 script = ExtResource("1_b6uis")
 
 [node name="collision" type="CollisionShape2D" parent="."]

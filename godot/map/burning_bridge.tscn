@@ -1,0 +1,69 @@
+[gd_scene load_steps=8 format=3 uid="uid://7cs4wyt4prkf"]
+
+[ext_resource type="Texture2D" uid="uid://b5wbjy0mfuv4x" path="res://debug/bridge_on_fire.png" id="1_me36o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_delw0"]
+atlas = ExtResource("1_me36o")
+region = Rect2(0, 0, 64, 126)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhino"]
+atlas = ExtResource("1_me36o")
+region = Rect2(64, 0, 64, 126)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jitl"]
+atlas = ExtResource("1_me36o")
+region = Rect2(128, 0, 64, 126)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iapva"]
+atlas = ExtResource("1_me36o")
+region = Rect2(0, 126, 64, 126)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvyqr"]
+atlas = ExtResource("1_me36o")
+region = Rect2(64, 126, 64, 126)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tumdf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_delw0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nhino")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8jitl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iapva")
+}],
+"loop": true,
+"name": &"Burning",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bvyqr")
+}],
+"loop": true,
+"name": &"NotBurning",
+"speed": 10.0
+}]
+
+[node name="BurningBridge" type="AnimatedSprite2D"]
+texture_filter = 1
+position = Vector2(344, 1)
+sprite_frames = SubResource("SpriteFrames_tumdf")
+animation = &"Burning"
+autoplay = "Burning"
+frame = 2
+frame_progress = 0.371778
+metadata/_aseprite_wizard_config_ = {
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"op_exp": false,
+"source": "res://map/bridge_on_fire.aseprite"
+}

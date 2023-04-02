@@ -1,0 +1,34 @@
+<changelist name="Changes3" date="1680392231913" recycled="false">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Changes3/shelved.patch" />
+  <option name="DESCRIPTION" value="Changes" />
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="godot/debug/bridge_on_fire.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes3/bridge_on_fire.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="godot/map/bridge_on_fire.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes3/bridge_on_fire1.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="godot/map/bridge_on_fire.res" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes3/bridge_on_fire.res" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="godot/debug/level1.tres" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes3/level1.tres" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="godot/i18n/translation.de.translation" />
+    <option name="AFTER_PATH" value="godot/i18n/translation.de.translation" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes3/translation.de.translation" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="godot/i18n/translation.en.translation" />
+    <option name="AFTER_PATH" value="godot/i18n/translation.en.translation" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes3/translation.en.translation" />
+  </binary>
+</changelist>

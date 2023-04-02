@@ -3,16 +3,14 @@ extends Node
 const WaterObjectType = preload("res://objects/water.tscn")
 const BridgeObjectType = preload("res://objects/bridge.tscn")
 
-var needed_skill = "none"
 var player_in_range = false
-
+var object = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Active.hide()
 	var player = get_parent().get_node("player")
 	var area2d = get_node("Area2D")
 
-	var object = null
 	match object_type:
 		"water":
 			object = WaterObjectType.instantiate()
@@ -24,7 +22,6 @@ func _ready():
 	if object != null:
 		$Sprite2D.hide()
 		self.add_child(object)
-		needed_skill = object.required_skill
 
 	player.connect("skill_tried", _on_player_skill_tried)
 	area2d.connect("area_entered", _on_area_entered)
@@ -36,10 +33,12 @@ func _process(delta):
 
 func _on_player_skill_tried(player):
 	if player_in_range:
-		print("looking for skill: ", needed_skill)
-		if (player.can_use_skill(needed_skill)):
+		print("looking for skill: ", object.required_skill)
+		if (player.can_use_skill(object.required_skill)):
 			print("calling for skill use")
-			player.use_skill(needed_skill)
+			player.use_skill(object.required_skill)
+			if object != null:
+				object.do_action()
 		else:
 			print("skill couldn't be used")
 

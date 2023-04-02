@@ -8,6 +8,7 @@ const ACCELERATION = 10
 signal skill_tried(player_object)
 signal balance_change(current_balance)
 signal game_over(balance)
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready
@@ -21,7 +22,6 @@ var in_action = false
 var skills = {"asia":{"Fly":-1,"Cry":1}}
 var is_swapped = false
 var emotional_balance = 2
-
 
 func update_balance_skill(skill):
 	emotional_balance = get_new_balance(skill)
@@ -79,8 +79,8 @@ func move(delta):
 	move_and_slide()
 	var areaPos = velocity.normalized()
 	if (areaPos != Vector2.ZERO):
-		current_view = Vector2(areaPos.x*64,areaPos.y*80)
-		$interactiveArea.position = current_view
+		current_view = Vector2(areaPos.x*64,areaPos.y*64) 
+		$interactiveArea.position = $collision.position + current_view
 
 func set_animation(input_vector):
 	if(input_vector.x > 0 ):
@@ -122,8 +122,7 @@ func use_skill(skill):
 
 	in_action = false
 
-
 func _on_hud_game_restart():
 	emotional_balance = 2
 	emit_signal("balance_change", emotional_balance)
-	position = Vector2(0,0)
+	get_tree().reload_current_scene()
