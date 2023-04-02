@@ -144,9 +144,13 @@ func use_skill(skill):
 		await $AnimStart.timeout
 		$AnimEnd.start()
 		var view_norm = current_view.normalized()
-		var col_size =  $collision.shape.size + Vector2(100,100)
-		position = position + Vector2(view_norm.x*col_size.x,view_norm.y*col_size.y)
-		move_and_slide()
+		var col_size =  $collision.shape.size + Vector2(100,100)		
+		# position = position + Vector2(view_norm.x*col_size.x,view_norm.y*col_size.y)
+		# move_and_slide()
+
+		roll_vector = Vector2(view_norm.x*col_size.x,view_norm.y*col_size.y).normalized()
+		roll_vector_final_position = position + Vector2(view_norm.x*col_size.x,view_norm.y*col_size.y)		
+		push_move = true
 
 	in_action = false
 
