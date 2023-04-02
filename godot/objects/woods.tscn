@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://tjyh05lryg2p"]
 
 [ext_resource type="Script" path="res://objects/woods.gd" id="1_ct0s1"]
-[ext_resource type="SpriteFrames" uid="uid://djwrxspwh6eup" path="res://map/burning_grass.res" id="2_a3gsv"]
+[ext_resource type="SpriteFrames" path="res://map/burning_grass.res" id="2_a3gsv"]
 
 [node name="woods" type="Node2D"]
 script = ExtResource("1_ct0s1")

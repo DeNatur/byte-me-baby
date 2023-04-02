@@ -1,0 +1,71 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlddlqiv8qu63"]
+
+[sub_resource type="GDScript" id="GDScript_4c2bs"]
+script/source = "extends Control
+
+@export var fade_duration:float = 1.0
+@export var stay_duration:float = 1.5
+@export var node:PackedScene
+@export var next_scene:PackedScene
+@export var interuptable:bool = true
+
+@onready var control = %NodeContainer
+@onready var instance:Node2D = node.instantiate()
+
+func _ready():
+	instance.modulate.a = 0.0
+	control.add_child(instance)
+	var tween = create_tween()
+	tween.set_trans(Tween.TRANS_CUBIC)
+	tween.set_ease(Tween.EASE_IN)
+	tween.tween_property(instance, \"modulate:a\", 1.0, fade_duration)\\
+	.from(0.0)\\
+	.finished.connect(_fade_out)
+	
+func _process(delta):
+	if interuptable and Input.is_action_just_pressed(\"exit\"):
+		_change_scene()
+	
+func _fade_out():
+	var tween = create_tween()
+	tween.set_trans(Tween.TRANS_CUBIC)
+	tween.set_ease(Tween.EASE_IN)
+	tween.tween_property(instance, \"modulate:a\", 0.0, fade_duration)\\
+	.set_delay(stay_duration)\\
+	.finished.connect(_change_scene)
+
+func _change_scene():
+	get_tree().change_scene_to_packed(next_scene)
+"
+
+[node name="BootsplashScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_4c2bs")
+fade_duration = 2.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NodeContainer" type="Control" parent="CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
