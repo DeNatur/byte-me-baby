@@ -1,12 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://ilhmki6uud7q"]
+[gd_scene load_steps=7 format=3 uid="uid://ilhmki6uud7q"]
 
 [ext_resource type="PackedScene" uid="uid://di6q5bu004kkj" path="res://player/player.tscn" id="1_52802"]
 [ext_resource type="Script" path="res://debug/debug.gd" id="1_mesnt"]
 [ext_resource type="PackedScene" uid="uid://djkkrg8flgkgl" path="res://emoji_bar/hud.tscn" id="2_gacyj"]
 [ext_resource type="PackedScene" uid="uid://bc5ov6fc5ohuo" path="res://objects/reactive_object.tscn" id="3_hll6n"]
 [ext_resource type="PackedScene" path="res://tile_map.tscn" id="3_nhvfj"]
+[ext_resource type="PackedScene" uid="uid://4jvy6visc5kf" path="res://bed.tscn" id="5_klv88"]
 
 [node name="Node2D" type="Node2D"]
+position = Vector2(1, 0)
 script = ExtResource("1_mesnt")
 
 [node name="Hud" parent="." instance=ExtResource("2_gacyj")]
@@ -16,6 +18,9 @@ layer_0/tile_data = PackedInt32Array(-6, 65536, 1, 65530, 65536, 1, 65531, 65536
 layer_1/tile_data = PackedInt32Array(-65527, 327680, 2, -65525, 458752, 2, -65522, 327680, 2, -65520, 458752, 2, -524266, 327680, 2, -524264, 458752, 2, -524261, 327680, 2, -393189, 327680, 2, -393187, 458752, 2, -524259, 458752, 2, -458720, 327680, 2, -458719, 393216, 2, -458717, 393216, 2, -458716, 458752, 2, -655302, 327680, 2, -655297, 458752, 2, -655298, 393216, 2, -655301, 393216, 2, -655300, 393216, 2, -655309, 327680, 2, -655307, 458752, 2, -655316, 327680, 2, -655314, 458752, 2, -327637, 327680, 2, -327635, 458752, 2)
 
 [node name="player" parent="." instance=ExtResource("1_52802")]
+
+[node name="Bed" parent="." instance=ExtResource("5_klv88")]
+position = Vector2(335, 28)
 
 [node name="bridge1" parent="." instance=ExtResource("3_hll6n")]
 position = Vector2(640, -64)
@@ -54,5 +59,8 @@ object_type = "bridge"
 
 [connection signal="game_restart" from="Hud" to="player" method="_on_hud_game_restart"]
 [connection signal="balance_change" from="player" to="Hud" method="_on_player_balance_change"]
+[connection signal="game_finish" from="player" to="Hud" method="_on_player_game_finish"]
 [connection signal="game_over" from="player" to="Hud" method="_on_player_game_over"]
 [connection signal="game_start" from="player" to="Hud" method="_on_player_game_start"]
+[connection signal="area_entered" from="Bed" to="player" method="_on_bed_area_entered"]
+[connection signal="body_entered" from="Bed" to="player" method="_on_bed_body_entered"]

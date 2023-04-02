@@ -12,7 +12,6 @@ var current_state = state.BURNING
 func _ready():
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
@@ -22,4 +21,12 @@ func do_action():
 	sprite_bridge.play("NotBurning")
 	required_skill = "NoBridgeNoCry"
 	get_parent().get_node("CollisionShape2D").call_deferred("set", "disabled", true)
+	$Timer.start()
 	
+func _on_timer_timeout():
+	current_state = state.BURNING
+	sprite_bridge.play("Burning")
+	required_skill = "Cry"
+	get_parent().get_node("CollisionShape2D").call_deferred("set", "disabled", false)
+	
+

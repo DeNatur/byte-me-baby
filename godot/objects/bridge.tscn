@@ -1,10 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://bli2mevd0w1xx"]
+[gd_scene load_steps=3 format=3 uid="uid://niqynnsxqfhv"]
 
 [ext_resource type="Script" path="res://objects/bridge.gd" id="1_t3qmq"]
-[ext_resource type="PackedScene" uid="uid://7cs4wyt4prkf" path="res://map/burning_bridge.tscn" id="2_lkcvg"]
+[ext_resource type="PackedScene" path="res://map/burning_bridge.tscn" id="2_lkcvg"]
 
 [node name="bridge" type="Node2D"]
 script = ExtResource("1_t3qmq")
 
 [node name="BurningBridge" parent="." instance=ExtResource("2_lkcvg")]
 position = Vector2(32, 0)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -35,6 +35,7 @@ var emotional_balance = 2
 
 
 func update_balance_skill(skill):
+	skills_stats[skill]+=1
 	emotional_balance = get_new_balance(skill)
 	emit_signal("balance_change", emotional_balance)
 
@@ -157,7 +158,7 @@ func use_skill(skill):
 		roll_vector = Vector2(view_norm.x*col_size.x,view_norm.y*col_size.y).normalized()
 		roll_vector_final_position = position + Vector2(view_norm.x*col_size.x,view_norm.y*col_size.y)		
 		push_move = true
-
+	
 	in_action = false
 
 func _on_hud_game_restart():
@@ -166,3 +167,6 @@ func _on_hud_game_restart():
 	emit_signal("balance_change", emotional_balance)
 	get_tree().reload_current_scene()
 
+
+func _on_bed_body_entered(body):
+	emit_signal("game_finish",emotional_balance, skills_stats)

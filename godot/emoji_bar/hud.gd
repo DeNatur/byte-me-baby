@@ -51,11 +51,31 @@ func _on_player_game_start():
 	$TimeOver.start()
 	game_running = true
 
-
-
-
 func _on_time_over_timeout():
 	updateScreenFilter(-1)
 	game_running = false
 	var msg = "Dragon run ouf of time"
 	set_game_over(msg)
+
+
+func _on_player_game_finish(balance, skills_stats):
+	var timeStat = $TimeOver.time_left
+	$TimeOver.stop()
+	game_running = false
+	$EmotionLayer.color = Color(180.0/255.0,24./255.,214./255.)
+	var msg = "Nice Dream!\n"
+	msg += "Time "+str(int(timeStat)) + " s\n"
+	msg += "Balance "+str(balance-2)+"\n"
+	msg += "Cried "+str(skills_stats["Cry"])+" times\n"
+	msg += "Flied  "+str(skills_stats["Fly"])+" times\n"
+	$Label.text = msg
+	$RestartButton.show()
+	
+	
+
+
+func _on_restart_button_button_down():
+		$RestartButton.hide()
+		emit_signal("game_restart")
+		$Label.text = ""
+		$EmotionLayer.color = Color(0,0,0,0)
