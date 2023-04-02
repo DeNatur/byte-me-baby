@@ -2,12 +2,13 @@ extends CharacterBody2D
 
 enum MoveDirection {LEFT, RIGHT}
 
-const SPEED = 300.0
+const SPEED = 450.0
 const ACCELERATION = 10
 
 signal skill_tried(player_object)
 signal balance_change(current_balance)
 signal game_over(balance)
+signal game_finish(balance, skills_stats)
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -20,6 +21,7 @@ var current_dragon = "asia"
 var current_view = Vector2.ZERO
 var in_action = false
 var skills = {"asia":{"Fly":-1,"Cry":1}}
+var skills_stats = {"Fly":0, "Cry":0}
 var is_swapped = false
 var emotional_balance = 2
 
@@ -109,7 +111,7 @@ func use_skill(skill):
 	if (!is_swapped):
 		animation_player.play(skill)
 	update_balance_skill(skill)
-	print(skill)
+	
 	if skill == "Cry":
 		await $AnimStart.timeout
 	elif skill == "Fly":
@@ -119,7 +121,7 @@ func use_skill(skill):
 		var col_size =  $collision.shape.size + Vector2(100,100)
 		position = position + Vector2(view_norm.x*col_size.x,view_norm.y*col_size.y)
 		move_and_slide()
-
+	skills_stats[skill] += 1
 	in_action = false
 
 func _on_hud_game_restart():
