@@ -19,7 +19,7 @@ func _process(delta):
 	
 func do_action():
 	current_state = state.OFF
-	#sprites_anim.play("Burning")
+	sprites_anim.play("Burning")
 	# Need to add waiting for animation to finish before the object is gone
 	required_skill = "NoWoodsNoFlame"
 	get_parent().get_node("CollisionShape2D").call_deferred("set", "disabled", true)
@@ -28,6 +28,7 @@ func do_action():
 	
 func _on_timer_timeout():
 	current_state = state.ON
+	sprites_anim.play("NotBurning")
 	required_skill = "Flame"
 	$Sprite2D.show()
 	get_parent().get_node("CollisionShape2D").call_deferred("set", "disabled", false)
