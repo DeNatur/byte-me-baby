@@ -8,6 +8,7 @@
 size = Vector2(57, 24)
 
 [sub_resource type="Animation" id="Animation_en7m1"]
+length = 0.7
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -64,7 +65,7 @@ tracks/4/path = NodePath("Sprite2D:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = false
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.16, 0.32, 0.48, 0.64, 0.8, 0.96),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 8, 9, 10, 11, 9, 8]
@@ -337,4 +338,5 @@ wait_time = 0.156
 one_shot = true
 
 [node name="AnimStart" type="Timer" parent="."]
+wait_time = 0.278
 one_shot = true

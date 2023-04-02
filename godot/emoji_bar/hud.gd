@@ -2,6 +2,11 @@ extends CanvasLayer
 
 signal game_restart
 var game_running = false
+var colors = {"asia":{"Up":Color8(255,255,173),"Bottom":Color8(52,152,219)},
+"europe":{"Up":Color8(176, 137, 86),"Bottom":Color8(158, 47, 47)}}
+
+var currentColor = "asia"
+
 
 func _process(delta):
 	if (game_running):
@@ -10,17 +15,23 @@ func _process(delta):
 		$TimeLabel.text = "60 s"
 
 func updateScreenFilter(balance):
-	print(balance)
+	var cur = colors[currentColor]
 	if balance > 2:
-		$EmotionLayer.color = Color(1,1,0,(balance-2.0)/4.0)
+		var color = cur["Up"]
+		color.a = (balance-2.0)/4.0
+		$EmotionLayer.color = color
 	elif balance == 2:
-		$EmotionLayer.color = Color(0,0,0,0)
+		$EmotionLayer.color = Color8(0,0,0,0)
 	else:
-		$EmotionLayer.color = Color(0,0,1,(2.0-balance)/4.0)
+		var color = cur["Bottom"]
+		color.a = (2.0-balance)/4.0
+		$EmotionLayer.color = color
+		$EmotionLayer.color = color
 
 
 func updateBar(balance):
 	$EmotionBar.setBalance(balance)
+	
 	
 	
 func set_game_over(msg):
@@ -71,11 +82,17 @@ func _on_player_game_finish(balance, skills_stats):
 	$Label.text = msg
 	$RestartButton.show()
 	
-	
-
 
 func _on_restart_button_button_down():
 		$RestartButton.hide()
 		emit_signal("game_restart")
 		$Label.text = ""
 		$EmotionLayer.color = Color(0,0,0,0)
+
+
+func _on_player_color_change(current_dragon, balance):
+	currentColor = current_dragon
+	var cur = colors[current_dragon]
+	$EmotionBar/Up.color = cur["Up"]
+	$EmotionBar/Botttom.color = cur["Bottom"]
+	updateScreenFilter(balance)
