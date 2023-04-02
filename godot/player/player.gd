@@ -17,6 +17,12 @@ var animation_player = $AnimationPlayer
 @onready
 var sprite_player = $Sprite2D
 var direction = MoveDirection.RIGHT
+
+var push_move = false
+var roll_vector = Vector2.ZERO
+var roll_vector_final_position = Vector2.ZERO
+var ROLL_SPEED = 125
+
 var current_dragon = "asia"
 var current_view = Vector2.ZERO
 var in_action = false
@@ -66,7 +72,10 @@ func _process(delta):
 	elif Input.is_action_just_pressed("change"):	
 		swap_my_ass()
 	else:
-		move(delta)
+		if push_move == true:
+			roll(delta)
+		else:
+			move(delta)
 
 
 func move(delta):
@@ -83,6 +92,23 @@ func move(delta):
 	if (areaPos != Vector2.ZERO):
 		current_view = Vector2(areaPos.x*64,areaPos.y*64) 
 		$interactiveArea.position = $collision.position + current_view
+
+func roll(delta):
+	var is_reached_end = false
+	var delta_pos = position - roll_vector_final_position
+	var acceptable_threshold = Vector2(1.0, 1.0)
+	var dist_to_accpt_thrsh = floor(delta_pos.distance_to(acceptable_threshold))
+	if dist_to_accpt_thrsh < 2:
+		is_reached_end = true
+	
+	if is_reached_end:
+		push_move = false
+		$collision.call_deferred("set", "disabled", false)
+		roll_vector = Vector2.ZERO
+	else:	
+		velocity = roll_vector * ROLL_SPEED
+		$collision.call_deferred("set", "disabled", true)
+		move_and_slide()
 
 func set_animation(input_vector):
 	if(input_vector.x > 0 ):
@@ -118,10 +144,14 @@ func use_skill(skill):
 		await $AnimStart.timeout
 		$AnimEnd.start()
 		var view_norm = current_view.normalized()
-		var col_size =  $collision.shape.size + Vector2(100,100)
-		position = position + Vector2(view_norm.x*col_size.x,view_norm.y*col_size.y)
-		move_and_slide()
-	skills_stats[skill] += 1
+		var col_size =  $collision.shape.size + Vector2(100,100)		
+		# position = position + Vector2(view_norm.x*col_size.x,view_norm.y*col_size.y)
+		# move_and_slide()
+
+		roll_vector = Vector2(view_norm.x*col_size.x,view_norm.y*col_size.y).normalized()
+		roll_vector_final_position = position + Vector2(view_norm.x*col_size.x,view_norm.y*col_size.y)		
+		push_move = true
+
 	in_action = false
 
 func _on_hud_game_restart():
