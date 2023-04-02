@@ -84,13 +84,65 @@ position = Vector2(5695, -576)
 [node name="Basic" type="RichTextLabel" parent="HowToPlayInfo"]
 offset_left = 128.0
 offset_top = 64.0
-offset_right = 448.0
+offset_right = 512.0
 offset_bottom = 192.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("7_2nr6m")
 theme_override_font_sizes/normal_font_size = 34
-text = "Arrows, WASD - Movement
-E - Use your emotion"
+text = "`Arrows, WASD` - Movement
+`E` - Use your emotion on object"
+
+[node name="Basic2" type="RichTextLabel" parent="HowToPlayInfo"]
+offset_left = 448.0
+offset_top = -320.0
+offset_right = 768.0
+offset_bottom = -192.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("7_2nr6m")
+theme_override_font_sizes/normal_font_size = 34
+text = "Use your tears to calm down the fire and pass..."
+
+[node name="Basic3" type="RichTextLabel" parent="HowToPlayInfo"]
+offset_left = 960.0
+offset_top = -256.0
+offset_right = 1216.0
+offset_bottom = -128.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("7_2nr6m")
+theme_override_font_sizes/normal_font_size = 34
+text = "Dragon is happy when He flies"
+
+[node name="Basic4" type="RichTextLabel" parent="HowToPlayInfo"]
+offset_left = 1728.0
+offset_top = -704.0
+offset_right = 2176.0
+offset_bottom = -576.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("7_2nr6m")
+theme_override_font_sizes/normal_font_size = 34
+text = "B u t  B e w a r e !
+
+Balance is the key to your journey"
+
+[node name="Basic5" type="RichTextLabel" parent="HowToPlayInfo"]
+offset_left = 2048.0
+offset_top = -256.0
+offset_right = 2304.0
+offset_bottom = -128.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("7_2nr6m")
+theme_override_font_sizes/normal_font_size = 34
+text = "Too much feelings may wake you up"
+
+[node name="Basic6" type="RichTextLabel" parent="HowToPlayInfo"]
+offset_left = 2944.0
+offset_top = -896.0
+offset_right = 3456.0
+offset_bottom = -768.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("7_2nr6m")
+theme_override_font_sizes/normal_font_size = 34
+text = "And this is such a calm dream..."
 
 [node name="Advanced" type="RichTextLabel" parent="HowToPlayInfo"]
 offset_left = 4928.0
@@ -100,7 +152,17 @@ offset_bottom = -704.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("7_2nr6m")
 theme_override_font_sizes/normal_font_size = 34
-text = "X - Change your culture dragon"
+text = "I wonder what `X` would do..."
+
+[node name="Advanced2" type="RichTextLabel" parent="HowToPlayInfo"]
+offset_left = 5760.0
+offset_top = -896.0
+offset_right = 6144.0
+offset_bottom = -832.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("7_2nr6m")
+theme_override_font_sizes/normal_font_size = 34
+text = "Sleep weel my child"
 
 [connection signal="game_restart" from="Hud" to="player" method="_on_hud_game_restart"]
 [connection signal="balance_change" from="player" to="Hud" method="_on_player_balance_change"]

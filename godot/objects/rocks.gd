@@ -19,17 +19,20 @@ func _process(delta):
 	
 func do_action():
 	current_state = state.OFF
-	#sprites_anim.play("Burning")
+	$TimerAnim.start()
+	sprites_anim.play("Broken")
 	# Need to add waiting for animation to finish before the object is gone
 	required_skill = "NoRocksNoSmash"
+	await $TimerAnim.timeout
 	get_parent().get_node("CollisionShape2D").call_deferred("set", "disabled", true)
-	$Sprite2D.hide()
+	$AnimatedSprite2D.hide()
 	$Timer.start()
 	
 func _on_timer_timeout():
 	current_state = state.ON
 	required_skill = "Smash"
-	$Sprite2D.show()
+	sprites_anim.play("NotBroken")
+	$AnimatedSprite2D.show()
 	get_parent().get_node("CollisionShape2D").call_deferred("set", "disabled", false)
 	
 

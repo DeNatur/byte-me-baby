@@ -10,7 +10,7 @@ script = ExtResource("1_t3qmq")
 position = Vector2(32, 0)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 4.0
 one_shot = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
