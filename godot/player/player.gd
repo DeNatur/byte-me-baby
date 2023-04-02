@@ -27,21 +27,24 @@ var ROLL_SPEED = 300
 var current_dragon = "asia"
 var current_view = Vector2.ZERO
 var in_action = false
-var skills = {"asia":{"Fly":-1,"Cry":1}}
-var skills_stats = {"Fly":0, "Cry":0}
-var is_swapped = false
+var skills = {"asia":{"Fly":-1,"Cry":1}, "europe":{"Smash":1,"Flame":-1}}
+var skills_stats = {"Fly":0, "Cry":0, "Smash":0,"Flame":-1}
+@onready
+var animations = {"asia":$AnimationPlayer, "europe":$AnimationPlayer}
+@onready
+var sprites = {"asia":$Sprite2D, "europe":$TripToEu}
 var game_started = false
-var emotional_balance = 2
+var emotional_balance = {"europe":2,"asia":2}
 
 
 func update_balance_skill(skill):
 	skills_stats[skill]+=1
-	emotional_balance = get_new_balance(skill)
-	emit_signal("balance_change", emotional_balance)
+	emotional_balance[current_dragon] = get_new_balance(skill)
+	emit_signal("balance_change", emotional_balance[current_dragon])
 
 func get_new_balance(skill):
 	var skill_value = skills[current_dragon][skill]
-	return emotional_balance + skill_value
+	return emotional_balance[current_dragon] + skill_value
 	
 func can_use_skill(skill):
 	if skill in skills[current_dragon]:
@@ -53,19 +56,21 @@ func can_use_skill(skill):
 	return false
 
 func _ready():
-	emit_signal("balance_change", emotional_balance)
+	emit_signal("balance_change", emotional_balance[current_dragon])
 	
 	
 
 func swap_my_ass():
-	is_swapped = not is_swapped
-	$AnimationPlayer.pause()
-	$AnimationPlayer.clear_queue()
-	sprite_player.hide()
-	if (is_swapped):
-		sprite_player = $TripToEu
+	if current_dragon == "asia":
+		current_dragon = "europe"
 	else:
-		sprite_player = $Sprite2D
+		current_dragon = "asia"
+	animation_player.pause()
+	animation_player = animations[current_dragon]
+	print(current_dragon)
+	animation_player.clear_queue()
+	sprite_player.hide()
+	sprite_player = sprites[current_dragon]
 	sprite_player.show()
 	
 func _process(delta):
@@ -124,11 +129,11 @@ func set_animation(input_vector):
 	elif(input_vector.x < 0):
 		sprite_player.set_flip_h(true)
 		direction = MoveDirection.LEFT
-	if (!is_swapped):
-		if(input_vector != Vector2.ZERO):
-			animation_player.play("Walk")
-		else:
-			set_idle_anim()
+
+	if(input_vector != Vector2.ZERO):
+		animation_player.play("Walk")
+	else:
+		set_idle_anim()
 
 func set_idle_anim(): 
 	animation_player.play("Idle")
@@ -136,13 +141,12 @@ func set_idle_anim():
 			
 func skill(delta):
 	emit_signal("skill_tried", self)	
-
+	
 	
 func use_skill(skill):
 	in_action = true
 	$AnimStart.start()
-	if (!is_swapped):
-		animation_player.play(skill)
+	animation_player.play(skill)
 	update_balance_skill(skill)
 	
 	if skill == "Cry":
@@ -162,11 +166,11 @@ func use_skill(skill):
 	in_action = false
 
 func _on_hud_game_restart():
-	emotional_balance = 2
+	emotional_balance = {"europe":2,"asia":2}
 	game_started=false
-	emit_signal("balance_change", emotional_balance)
+	emit_signal("balance_change", emotional_balance[current_dragon])
 	get_tree().reload_current_scene()
 
 
 func _on_bed_body_entered(body):
-	emit_signal("game_finish",emotional_balance, skills_stats)
+	emit_signal("game_finish",emotional_balance[current_dragon], skills_stats)
