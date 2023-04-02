@@ -31,9 +31,9 @@ var in_action = false
 var skills = {"asia":{"Fly":-1,"Cry":1}, "europe":{"Smash":1,"Flame":-1}}
 var skills_stats = {"Fly":0, "Cry":0, "Smash":0,"Flame":0}
 @onready
-var animations = {"asia":$AnimationPlayer, "europe":$AnimationPlayer}
+var animations = {"asia":$AnimationPlayer, "europe":$GermanAnimationPlayer}
 @onready
-var sprites = {"asia":$Sprite2D, "europe":$TripToEu}
+var sprites = {"asia":$Sprite2D, "europe":$GermanSprite2D}
 var game_started = false
 var emotional_balance = {"europe":2,"asia":2}
 
