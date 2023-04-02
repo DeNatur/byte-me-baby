@@ -7,6 +7,7 @@ const ACCELERATION = 10
 
 signal skill_tried(player_object)
 signal balance_change(current_balance)
+signal color_change(current_dragon, balance)
 signal game_over(balance)
 signal game_finish(balance, skills_stats)
 signal game_start()
@@ -28,7 +29,7 @@ var current_dragon = "asia"
 var current_view = Vector2.ZERO
 var in_action = false
 var skills = {"asia":{"Fly":-1,"Cry":1}, "europe":{"Smash":1,"Flame":-1}}
-var skills_stats = {"Fly":0, "Cry":0, "Smash":0,"Flame":-1}
+var skills_stats = {"Fly":0, "Cry":0, "Smash":0,"Flame":0}
 @onready
 var animations = {"asia":$AnimationPlayer, "europe":$AnimationPlayer}
 @onready
@@ -67,7 +68,8 @@ func swap_my_ass():
 		current_dragon = "asia"
 	animation_player.pause()
 	animation_player = animations[current_dragon]
-	print(current_dragon)
+	emit_signal("balance_change", emotional_balance[current_dragon])
+	emit_signal("color_change", current_dragon, emotional_balance[current_dragon])
 	animation_player.clear_queue()
 	sprite_player.hide()
 	sprite_player = sprites[current_dragon]
