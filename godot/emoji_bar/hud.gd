@@ -6,6 +6,9 @@ var colors = {"asia":{"Up":Color8(255,255,173),"Bottom":Color8(52,152,219)},
 "europe":{"Up":Color8(176, 137, 86),"Bottom":Color8(158, 47, 47)}}
 
 var currentColor = "asia"
+var emotions = {"asia":{"Up":"excited","Bottom":"let down"},
+"europe":{"Up":"proud","Bottom":"furious"}
+}
 
 
 func _process(delta):
@@ -52,9 +55,9 @@ func _on_player_game_over(balance):
 	game_running = false
 	var msg = ""
 	if balance > 2:
-		msg = "Dragon was to excited. Dreamer woke up."
+		msg = "Dragon was too" + emotions[currentColor]["Up"] + ". Dreamer woke up."
 	else:
-		msg = "Dragon couldn't fight through sadness."
+		msg = "Dragon couldn't fight through " + emotions[currentColor]["Bottom"]
 	set_game_over(msg)
 	
 
