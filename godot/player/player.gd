@@ -19,7 +19,7 @@ var current_dragon = "asia"
 var current_view = Vector2.ZERO
 var in_action = false
 var skills = {"asia":{"Fly":-1,"Cry":1}}
-
+var is_swapped = false
 var emotional_balance = 2
 
 
@@ -42,13 +42,27 @@ func can_use_skill(skill):
 
 func _ready():
 	emit_signal("balance_change", emotional_balance)
-	print(emotional_balance)
+	
+	
 
+func swap_my_ass():
+	is_swapped = not is_swapped
+	$AnimationPlayer.pause()
+	$AnimationPlayer.clear_queue()
+	sprite_player.hide()
+	if (is_swapped):
+		sprite_player = $TripToEu
+	else:
+		sprite_player = $Sprite2D
+	sprite_player.show()
+	
 func _process(delta):
 	if in_action:
 		pass
 	elif Input.is_action_just_pressed("interact"):	
 		skill(delta)
+	elif Input.is_action_just_pressed("change"):	
+		swap_my_ass()
 	else:
 		move(delta)
 
@@ -75,10 +89,11 @@ func set_animation(input_vector):
 	elif(input_vector.x < 0):
 		sprite_player.set_flip_h(true)
 		direction = MoveDirection.LEFT
-	if(input_vector != Vector2.ZERO):
-		animation_player.play("Walk")
-	else:
-		set_idle_anim()
+	if (!is_swapped):
+		if(input_vector != Vector2.ZERO):
+			animation_player.play("Walk")
+		else:
+			set_idle_anim()
 
 func set_idle_anim(): 
 	animation_player.play("Idle")
@@ -91,7 +106,8 @@ func skill(delta):
 func use_skill(skill):
 	in_action = true
 	$AnimStart.start()
-	animation_player.play(skill)
+	if (!is_swapped):
+		animation_player.play(skill)
 	update_balance_skill(skill)
 	print(skill)
 	if skill == "Cry":
