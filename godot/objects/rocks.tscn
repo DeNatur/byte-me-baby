@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bbxvpgxpaf4yk"]
 
 [ext_resource type="Script" path="res://objects/rocks.gd" id="1_dnxfi"]
-[ext_resource type="SpriteFrames" path="res://map/broken_rock.res" id="2_lsuk4"]
+[ext_resource type="SpriteFrames" uid="uid://f0i4wkbti4n3" path="res://map/broken_rock.res" id="2_lsuk4"]
 
 [node name="rocks" type="Node2D"]
 script = ExtResource("1_dnxfi")
