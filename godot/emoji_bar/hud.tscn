@@ -2,15 +2,16 @@
 
 [ext_resource type="PackedScene" uid="uid://cfhihuadmf0gb" path="res://emoji_bar/emotion_bar.tscn" id="1_2j7sh"]
 [ext_resource type="Script" path="res://emoji_bar/hud.gd" id="1_d86gm"]
-[ext_resource type="FontFile" uid="uid://le2vdo2626vw" path="res://fonts/Montserrat-Medium.ttf" id="3_vqbs0"]
+[ext_resource type="FontFile" uid="uid://c1a18i10l8t8x" path="res://fonts/Norse.otf" id="3_bosh0"]
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_d86gm")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
 
 [node name="EmotionBar" parent="." instance=ExtResource("1_2j7sh")]
-position = Vector2(470, 30)
+position = Vector2(-31, 60)
 scale = Vector2(0.7, 0.7)
 
 [node name="EmotionLayer" type="ColorRect" parent="."]
@@ -24,7 +25,22 @@ color = Color(0, 0, 1, 0)
 [node name="Label" type="Label" parent="."]
 offset_right = 588.0
 offset_bottom = 338.0
-theme_override_fonts/font = ExtResource("3_vqbs0")
+theme_override_fonts/font = ExtResource("3_bosh0")
 theme_override_font_sizes/font_size = 25
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TimeLabel" type="Label" parent="."]
+offset_left = 8.0
+offset_top = 9.0
+offset_right = 61.0
+offset_bottom = 67.0
+theme_override_fonts/font = ExtResource("3_bosh0")
+theme_override_font_sizes/font_size = 25
+text = "time
+60 s"
+horizontal_alignment = 1
+
+[node name="TimeOver" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
