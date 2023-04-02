@@ -606,7 +606,7 @@ wait_time = 0.156
 one_shot = true
 
 [node name="AnimStart" type="Timer" parent="."]
-wait_time = 1.01
+wait_time = 0.5
 one_shot = true
 
 [node name="GermanSprite2D" type="Sprite2D" parent="."]
