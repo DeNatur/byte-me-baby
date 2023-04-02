@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://di6q5bu004kkj"]
+[gd_scene load_steps=12 format=3 uid="uid://di6q5bu004kkj"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_b6uis"]
 [ext_resource type="Texture2D" uid="uid://b0fck7we0tyke" path="res://player/dragon_anim1.png" id="1_qx2ni"]
@@ -274,6 +274,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_txkov"]
 size = Vector2(32, 32)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a1mwi"]
+size = Vector2(16, 16)
+
 [node name="player" type="CharacterBody2D"]
 top_level = true
 script = ExtResource("1_b6uis")
@@ -326,12 +329,18 @@ libraries = {
 }
 
 [node name="interactiveArea" type="Area2D" parent="."]
+rotation = 6.28319
 collision_layer = 4
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="interactiveArea"]
+[node name="CollisionShape2D-vert" type="CollisionShape2D" parent="interactiveArea"]
+position = Vector2(-4.53423e-15, -13)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_txkov")
+
+[node name="CollisionShape2D-hor" type="CollisionShape2D" parent="interactiveArea"]
+position = Vector2(68, 41)
+shape = SubResource("RectangleShape2D_a1mwi")
 
 [node name="AnimEnd" type="Timer" parent="."]
 wait_time = 0.156

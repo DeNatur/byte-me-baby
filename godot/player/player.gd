@@ -92,6 +92,14 @@ func move(delta):
 	if (areaPos != Vector2.ZERO):
 		current_view = Vector2(areaPos.x*64,areaPos.y*64) 
 		$interactiveArea.position = $collision.position + current_view
+		
+		# this almost works, but during rolling old position is still used
+		#var new_position = $collision.position + current_view
+		#print(new_position.normalized())
+		#if new_position.y != $collision.position.y + 0:
+		#	$interactiveArea.get_node("CollisionShape2D-vert").position.y = new_position.y
+		#if new_position.x != $collision.position.x + 0:
+		#	$interactiveArea.get_node("CollisionShape2D-hor").position.x = new_position.x
 
 func roll(delta):
 	var is_reached_end = false
