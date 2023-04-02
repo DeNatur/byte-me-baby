@@ -148,7 +148,7 @@ func use_skill(skill):
 	if skill == "Cry":
 		await $AnimStart.timeout
 	elif skill == "Fly":
-		await $AnimStart.timeout
+		# await $AnimStart.timeout
 		$AnimEnd.start()
 		var view_norm = current_view.normalized()
 		var col_size =  $collision.shape.size + Vector2(100,100)		
